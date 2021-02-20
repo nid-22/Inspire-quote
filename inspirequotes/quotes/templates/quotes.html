@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{%block css%}
+<style>
+    .blockquote-custom {
+  position: relative;
+  height: 100px;
+  padding: 20px;
+}
+
+.blockquote-custom-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -25px;
+  left: 50px;}
+
+  .blockquote{
+  background-color: azure;
+  font-size: 16px;
+  }
+
+  h1{
+      color: beige;
+      margin-bottom:50px ;
+  }
+
+
+</style>
+{%endblock%}
+
+{% block content%}
+<div class="grid-portfolio" id="portfolio">
+    <div class="container">
+        {% if category%}
+            {%for i in category%}
+            <h1>{{i.name}}</h1>
+            {% endfor %}
+        {% endif %}
+
+        {% if author %}
+            {%for i in author%}
+            <h1>{{i.name}}</h1>
+            {% endfor %}
+        {% endif %}
+
+        {% if movie%}
+            {%for i in movie%}
+            <h1>{{i.name}}</h1>
+            {% endfor %}
+        {% endif %}
+
+
+        <div class="row">
+            {%for i in quote%}
+
+            <div class="col-lg-6 mx-auto">
+
+                <!-- CUSTOM BLOCKQUOTE -->
+                <blockquote class="blockquote blockquote-custom bg-white p-10 shadow rounded">
+                    <div class="blockquote-custom-icon bg-info shadow-sm"><i class="fa fa-quote-left text-white"></i></div>
+                    <p class="mb-0 mt-2 font-italic">" {{i.line}} "</p>
+                    <p> {{i.author}}</p>
+                    
+                </blockquote><!-- END -->
+
+            </div>    
+            {% endfor %}                      
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="load-more-button">
+                    <a href="#">Load More</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock%}
